@@ -11,8 +11,8 @@ import java.util.UUID;
 @Table(name = "talent")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Talent {
 

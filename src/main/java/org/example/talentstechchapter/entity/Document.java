@@ -10,8 +10,8 @@ import java.util.UUID;
 @Table(name = "document")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Document {
 
