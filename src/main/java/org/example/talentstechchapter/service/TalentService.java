@@ -26,27 +26,23 @@ public class TalentService {
         this.documentRepository = documentRepository;
     }
 
-    // 1) Get all talents
     public List<TalentDTO> getAllTalents() {
         return talentRepository.findAll().stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
 
-    // 2) Get a specific talent by ID
     public Optional<TalentDTO> getTalentById(String id) {
         return talentRepository.findById(id)
                 .map(this::mapToDTO);
     }
 
-    // 3) Get documents for a specific talent
     public List<DocumentDTO> getDocumentsForTalent(String talentId) {
         return documentRepository.findByTalentId(talentId).stream()
                 .map(this::mapToDocumentDTO)
                 .collect(Collectors.toList());
     }
 
-    // 4) Get a specific document for a specific talent
     public Optional<DocumentDTO> getDocumentForTalent(String talentId, String documentId) {
         // first check if the talent exists (optional)
         return talentRepository.findById(talentId).flatMap(talent ->
