@@ -1,8 +1,6 @@
 package org.example.talentstechchapter.controller;
 
-
 import org.example.talentstechchapter.dto.DocumentDTO;
-import org.example.talentstechchapter.dto.TalentDTO;
 import org.example.talentstechchapter.service.TalentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +21,8 @@ public class DocumentController {
     // GET /talent/{id}/documents -> All documents for a specific talent
     @GetMapping
     public ResponseEntity<List<DocumentDTO>> getDocumentsForTalent(@PathVariable String id) {
-        // optionally validate the talent
-        return talentService.getTalentById(id)
-                .map(talentDto -> {
-                    List<DocumentDTO> documents = talentService.getDocumentsForTalent(id);
-                    return new ResponseEntity<>(documents, HttpStatus.OK);
-                })
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        List<DocumentDTO> documents = talentService.getDocumentsForTalent(id);
+        return new ResponseEntity<>(documents, HttpStatus.OK);
     }
 
     // GET /talent/{id}/documents/{documentId} -> A specific document
@@ -37,9 +30,7 @@ public class DocumentController {
     public ResponseEntity<DocumentDTO> getDocumentForTalent(
             @PathVariable String id,
             @PathVariable String documentId) {
-        return talentService.getDocumentForTalent(id, documentId)
-                .map(document -> new ResponseEntity<>(document, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        DocumentDTO document = talentService.getDocumentForTalent(id, documentId);
+        return new ResponseEntity<>(document, HttpStatus.OK);
     }
 }
-

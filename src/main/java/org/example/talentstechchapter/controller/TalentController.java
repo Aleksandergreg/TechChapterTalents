@@ -1,6 +1,5 @@
 package org.example.talentstechchapter.controller;
 
-
 import org.example.talentstechchapter.dto.TalentDTO;
 import org.example.talentstechchapter.service.TalentService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/talents")
+@RequestMapping("/talent")
 public class TalentController {
 
     private final TalentService talentService;
@@ -29,9 +28,7 @@ public class TalentController {
     // GET /talent/{id} -> A specific talent
     @GetMapping("/{id}")
     public ResponseEntity<TalentDTO> getTalentById(@PathVariable String id) {
-        return talentService.getTalentById(id)
-                .map(talent -> new ResponseEntity<>(talent, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        TalentDTO talent = talentService.getTalentById(id);
+        return new ResponseEntity<>(talent, HttpStatus.OK);
     }
 }
-
