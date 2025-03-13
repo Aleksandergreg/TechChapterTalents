@@ -85,12 +85,18 @@ public class InitData {
                     .name("Resume - Aleksander")
                     .content("Check out my LinkedIn or the application sent earlier ")
                     .build();
-            doc3.setTalent(t2);
+            doc4.setTalent(t3);
+
+            Document doc5 = Document.builder()
+                    .name("Portfolio - Aleksander")
+                    .content("Check out my GitHub :-)")
+                    .build();
+            doc5.setTalent(t3);
 
 
 
             // Save documents
-            documentRepository.saveAll(List.of(doc1, doc2, doc3));
+            documentRepository.saveAll(List.of(doc1, doc2, doc3, doc4, doc5));
         };
     }
 }
