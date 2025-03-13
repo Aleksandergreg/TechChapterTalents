@@ -45,10 +45,24 @@ public class InitData {
                     .linkedin("https://linkedin.com/in/bob")
                     .build();
 
-            // Save talents
-            talentRepository.saveAll(List.of(t1, t2));
+            Talent t3 = Talent.builder()
+                    .name("Aleksander Gregersen")
+                    .title("Studying AP Computer Science at KEA")
+                    .profileText("Big fan of learning automated processes, programming languages and DevOps")
+                    .email("agregersen0gmail.com")
+                    .phone("+4542755293")
+                    .city("Copenhagen")
+                    .country("Denmark")
+                    .github("https://github.com/Aleksandergreg")
+                    .linkedin("https://www.linkedin.com/in/aleksander-gregersen/")
+                    .build();
 
-            // Create some Document entities (link them to talents)
+
+
+
+            // Save talents
+            talentRepository.saveAll(List.of(t3, t1, t2));
+
             Document doc1 = Document.builder()
                     .name("Resume - Alice")
                     .content("Alice's Resume Content Here...")
@@ -66,6 +80,14 @@ public class InitData {
                     .content("Bob's Resume Content Here...")
                     .build();
             doc3.setTalent(t2);
+
+            Document doc4 = Document.builder()
+                    .name("Resume - Aleksander")
+                    .content("Check out my LinkedIn or the application sent earlier ")
+                    .build();
+            doc3.setTalent(t2);
+
+
 
             // Save documents
             documentRepository.saveAll(List.of(doc1, doc2, doc3));

@@ -48,9 +48,7 @@ public class TalentService {
                 .orElseThrow(() ->
                         new TalentNotFoundException("Talent not found with id: " + talentId));
 
-        // Or, if you only need to ensure the talent exists, skip storing it
-        // in a variable if you don't use it:
-        // talentRepository.findById(talentId).orElseThrow(...);
+
 
         return documentRepository.findByTalentId(talentId).stream()
                 .map(this::mapToDocumentDTO)
